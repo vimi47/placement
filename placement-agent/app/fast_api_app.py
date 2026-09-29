@@ -32,9 +32,15 @@ from app.app_utils.reasoning_engine_adapter import (
 )
 
 load_dotenv()
+FRONTEND_URL = os.environ.get(
+    "FRONTEND_URL",
+    "http://localhost:5173",
+)
+
 allow_origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    FRONTEND_URL,
 ]
 otel_to_cloud = os.environ.get(
     "GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY", ""
@@ -77,10 +83,7 @@ app: FastAPI = get_fast_api_app(
 )
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
+    allow_origins=allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
