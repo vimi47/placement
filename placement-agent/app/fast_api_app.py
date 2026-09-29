@@ -32,16 +32,15 @@ from app.app_utils.reasoning_engine_adapter import (
 )
 
 load_dotenv()
-FRONTEND_URL = os.environ.get(
-    "FRONTEND_URL",
-    "http://localhost:5173",
-)
+FRONTEND_URL = os.environ.get("FRONTEND_URL")
 
 allow_origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    FRONTEND_URL,
 ]
+
+if FRONTEND_URL:
+    allow_origins.append(FRONTEND_URL)
 otel_to_cloud = os.environ.get(
     "GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY", ""
 ).lower() in ("true", "1")
