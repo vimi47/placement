@@ -33,6 +33,10 @@ class LoginRequest(BaseModel):
 
 @router.post("/register")
 def register_student(data: RegisterRequest):
+    print("🔥 REGISTER ROUTE REACHED")
+
+    # Check whether student already exists
+    
 
     # Check whether student already exists
     existing_student = students_collection.find_one(
