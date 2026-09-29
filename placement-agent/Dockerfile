@@ -9,6 +9,7 @@ COPY pyproject.toml README.md uv.lock* ./
 COPY app ./app
 COPY agents ./agents
 COPY routes ./routes
+COPY mongodb.py ./mongodb.py
 
 RUN uv sync --frozen
 
