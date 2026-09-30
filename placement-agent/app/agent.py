@@ -11,7 +11,7 @@ from google.genai import types
 from mongodb import students_collection
 
 
-MODEL = "gemini-3.6-flash"
+MODEL = "gemini-3.5-flash"
 
 
 def save_student_profile(
